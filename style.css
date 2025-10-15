@@ -48,13 +48,23 @@ body{font-size:17px;line-height:1.7}
   .source{grid-column:1 / -1}
 }
 
-/* mobile/tablet: stack naturally, no sticky or wrapping issues */
-@media(max-width:979.98px){
+}
+
+@media (max-width: 979.98px){
   .sticky-aside{
-    position:static;
-    width:min(320px,90%);
-    margin:16px auto;
-    top:auto;
+    position: fixed;
+    top: 84px;          /* sits below the fixed header */
+    right: 12px;        /* hug the right edge */
+    left: auto;
+    bottom: auto;
+    width: clamp(160px, 28vw, 240px);
+    margin: 0;
+    z-index: 1001;      /* above story text */
   }
-  .page{padding:96px 16px 40px}
+  .sticky-img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 }

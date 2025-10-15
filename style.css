@@ -26,7 +26,28 @@ html,body{background:#0e0b1f;color:#f3ecff;font:16px/1.6 system-ui,-apple-system
 .source a{color:#22d3ee;text-decoration:none}
 .source a:hover{text-decoration:underline}
 
-@media (max-width: 800px){
-  .sticky-aside{float:none;width:100%;margin:16px 0;top:80px}
-  .page{padding:96px 16px 40px}
 }
+/* sticky sizing + behavior */
+.sticky-aside{
+  float:right;
+  width:clamp(220px, 28vw, 300px);
+  margin:24px 0 16px 24px;
+  position:sticky;
+  top:96px;
+}
+.sticky-img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:10px;
+}
+
+/* mobile: don't let it fill the whole screen */
+@media (max-width: 800px){
+  .sticky-aside{
+    position:static;
+    float:none;
+    width:min(320px, 90%);
+    margin:16px auto;
+    top:auto;
+  }

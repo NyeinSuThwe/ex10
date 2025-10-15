@@ -114,3 +114,24 @@ body{font-size:17px;line-height:1.7}
   .source{ grid-column:1 / -1; }
 }
 
+/* align story + aside on the same grid row (desktop) */
+@media (min-width: 980px){
+  .page{
+    display:grid;
+    grid-template-columns: minmax(0,1fr) clamp(260px,28vw,320px);
+    column-gap:32px;
+    align-items:start;
+  }
+
+  /* explicit row map: 1 = title, 2 = hero, 3 = story+aside, 4 = source */
+  .title{ grid-column: 1 / -1; grid-row: 1; }
+  .hero{  grid-column: 1 / -1; grid-row: 2; }
+
+  .story{ grid-column: 1; grid-row: 3; margin-top: 0; }
+  .sticky-aside{
+    grid-column: 2; grid-row: 3;
+    position: sticky; top: 96px; margin-top: 0;
+  }
+
+  .source{ grid-column: 1 / -1; grid-row: 4; }
+}

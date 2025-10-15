@@ -7,26 +7,14 @@ html,body{background:#0e0b1f;color:#f3ecff;font:16px/1.6 system-ui,-apple-system
 .nav a{color:#f3ecff;text-decoration:none;margin-left:20px}
 .nav a:hover{color:#22d3ee}
 
-.page{position:relative;max-width:760px;margin:0 auto;padding:96px 20px 48px}
+.page{position:relative;max-width:1040px;margin:0 auto;padding:96px 20px 48px}
 
 .title{font-size:clamp(28px,3vw,40px);font-weight:900;letter-spacing:.04em;text-transform:uppercase;margin:4px 0 16px}
 
 .hero{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 6px 30px rgba(0,0,0,.3);margin-bottom:12px}
 
-/* sticky image responsive fix */
-.sticky-aside{
-  float:right;
-  width:clamp(220px,28vw,300px);
-  margin:24px 0 16px 24px;
-  position:sticky;
-  top:96px;
-}
-.sticky-img{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:10px;
-}
+.sticky-aside{position:relative;margin:24px 0 16px 0}
+.sticky-img{display:block;width:100%;height:auto;border-radius:10px}
 .aside-note{margin-top:8px;color:#c8eef0}
 
 .story{margin-top:24px;padding:8px 0;text-align:justify}
@@ -38,13 +26,32 @@ html,body{background:#0e0b1f;color:#f3ecff;font:16px/1.6 system-ui,-apple-system
 .source a{color:#22d3ee;text-decoration:none}
 .source a:hover{text-decoration:underline}
 
-/* longer scroll feel */
 body{font-size:17px;line-height:1.7}
 
-@media(max-width:800px){
+/* desktop: split into two columns; sticky sits on the right column */
+@media(min-width:980px){
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) clamp(260px,28vw,320px);
+    column-gap:32px;
+    align-items:start;
+  }
+  .title,
+  .hero{grid-column:1 / -1}
+  .sticky-aside{
+    grid-column:2;
+    align-self:start;
+    position:sticky;
+    top:96px;
+  }
+  .story{grid-column:1}
+  .source{grid-column:1 / -1}
+}
+
+/* mobile/tablet: stack naturally, no sticky or wrapping issues */
+@media(max-width:979.98px){
   .sticky-aside{
     position:static;
-    float:none;
     width:min(320px,90%);
     margin:16px auto;
     top:auto;
